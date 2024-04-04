@@ -10,7 +10,7 @@ class Color {
         this.b = b
     }
     toRgbStr() {
-        return `rgb(${this.r},${this.g},${this.b})`
+        return `rgb(${this.r*255},${this.g*255},${this.b*255})`
     }
     [Symbol.toPrimitive]() {
         return this.toRgbStr()
