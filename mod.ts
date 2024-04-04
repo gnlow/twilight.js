@@ -12,6 +12,9 @@ class Color {
     toRgbStr() {
         return `rgb(${this.r},${this.g},${this.b})`
     }
+    [Symbol.toPrimitive]() {
+        return this.toRgbStr()
+    }
 }
 
 /**
@@ -19,6 +22,7 @@ class Color {
  * @returns [r: 0-1, g: 0-1, b: 0-1]
  */
 export const fromRange0to1 =
-(n: number) =>
-new Color(data[data.length * n])
-
+(n: number) => {
+    n = Math.min(Math.max(0, n), 1)
+    return new Color(data[Math.floor(data.length * n)])
+}
